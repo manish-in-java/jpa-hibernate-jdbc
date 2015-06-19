@@ -1,25 +1,68 @@
-[![Build Status](https://drone.io/github.com/manish-in-java/jvm-benchmark/status.png)](https://drone.io/github.com/manish-in-java/jvm-benchmark/latest)
+# Background
+It is common concern among developers that using an
+[Object-Relational Mapping](https://en.wikipedia.org/wiki/Object-relational_mapping)
+tool (ORM) with impact the performance of their application severely, especially
+if the database contains a significant number of records or if data needs to be
+fetched in bulk.  Some developers have created working benchmarks that kind of
+indicate that using ORMs can lead to 10 or 100 times degradation in performance
+as compared to using raw JDBC code.  Needless to say, many developers who are new
+to ORM concepts and who come across such benchmarks run away from ORMs in fear and
+many of them never dare to return to take a critical look.
 
-[![Build Status](https://codeship.com/projects/ac168df0-f822-0132-8ade-22801fbd7bef/status?branch=master)](https://codeship.com/projects/86533)
+There is no doubt that application performance (and security) are (or at least should
+be) the topmost concerns for any Software Architect.  Therefore, it is only justified
+that any technology be looked at critically and adopted only if fits the performance
+and security goals of a Software Development Team.
+
+Project Managers and Business Users on the other hand are more interested in more
+and better functionality quickly.  Given the amount of boilerplate code that an ORM
+tool can reduce, they are enticing enough for any Development Team looking to rely
+heavily on database interactions.  Most database interactions are standard and
+repetitive and pose no fun at all if copied and pasted for every single domain object
+in an application's code.  Therefore, a clear incentive exists for the Developers
+to use an ORM tool for database interactions and focus more on the business rules,
+logic and workflows in the application.  However, many teams have a deeply ingrained
+fear of ORM tools and therefore they cannot make an object decision on whether or not
+they will benefit from using an ORM tool for their application.
 
 # Overview
-This is a collection of micro-benchmarks that can be used to measure the performance
-offered by different Java Virtual Machines (JVMs).  The objective is to quantify the
-execution time and throughput of different JVMs so that they can be compared to each
-other objectively.
+This application uses some popular tools and technologies to compare the runtime
+performance of data access code using different mechanisms.  It uses an extreme case
+where any glaring flaws in any one data access technology should be highlighted much
+more than in regular use cases.  An in-memory database ([H2](http://www.h2database.com))
+with two tables `Person` and `Contract` is used.  The `Contract` table holds 3 records
+for every record in the `Person` table.  The `Person` table has 100,000 records (thereby
+having 300,000 records in the `Contract` table).  H2 database has been used because
+it allows the application to load the entire database in memory and performance
+measurement be free from the impact of external factors such as server load, network
+latency, network congestion, etc.  Measurements can focus purely on the mechanism
+used to load data.
 
-This application uses [JMH](http://openjdk.java.net/projects/code-tools/jmh/), a
-popular micro-benchmarking tool for running the benchmarks.  The advantage of using
-JMH lies in the fact that it attempts to run the benchmark under conditions close
-to realistic scenarios by performing tasks such as JVM warmup, multi-iteration
-measurements and JVM cooldown.  It even compiles and presents statistical parameters
-for the measurements such as minimum, maximum, mean, standard deviation, etc.
+[JMH](http://openjdk.java.net/projects/code-tools/jmh/), a popular micro-benchmarking
+tool is used for running the benchmarks.  The advantage of using JMH lies in the fact
+that it attempts to run the benchmark under conditions close to realistic scenarios by
+performing tasks such as JVM warmup, multi-iteration measurements and JVM cooldown.  It
+even compiles and presents statistical parameters for the measurements such as minimum,
+maximum, mean, standard deviation, etc.
+
+Three data access technologies - [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity),
+[Hibernate](https://en.wikipedia.org/wiki/Hibernate_(Java)) and
+[JPA](https://en.wikipedia.org/wiki/Java_Persistence_API) are compared.  JDBC is the
+standard Java mechanism for connecting to and working with relational databases.
+Hibernate and JPA are ORM tools built on top of JDBC.
+
+The benchmarks load all 100,000 person records from the database at the same time and
+then count the total number of contracts load along with the person records.
+
+Sample results can be checked by clicking the build status image at the top of this
+image which will show details for the latest continuous integration build for this
+sample.
 
 # License
 This sample application and its associated source code in its entirety is being made
 available under the following licensing terms.
 
-    Copyright (C) 2014
+    Copyright (C) 2015
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in the
