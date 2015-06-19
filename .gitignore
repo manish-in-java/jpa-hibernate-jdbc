@@ -1,0 +1,13 @@
+.classpath
+.project
+.gradle/
+.idea/
+.settings/
+build/
+target/
+*~
+*.iml
+*.lck
+*.log
+*.tmp
+*.trace.db
