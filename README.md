@@ -3,42 +3,45 @@
 # Background
 It is common concern among developers that using an
 [Object-Relational Mapping](https://en.wikipedia.org/wiki/Object-relational_mapping)
-tool (ORM) with impact the performance of their application severely, especially
+tool (ORM) will impact the performance of their application severely, especially
 if the database contains a significant number of records or if data needs to be
 fetched in bulk.  Some developers have created working benchmarks that kind of
 indicate that using ORMs can lead to 10 or 100 times degradation in performance
-as compared to using raw JDBC code.  Needless to say, many developers who are new
-to ORM concepts and who come across such benchmarks run away from ORMs in fear and
-many of them never dare to return to take a critical look.
+as compared to using raw JDBC.  Needless to say, many developers who are new to
+ORM concepts and who come across such benchmarks run away from ORMs in fear and
+many of them never dare to return to take a critical look at whether the difference
+in performance is due to the ORM or even real.
 
 There is no doubt that application performance (and security) are (or at least should
 be) the topmost concerns for any Software Architect.  Therefore, it is only justified
 that any technology be looked at critically and adopted only if fits the performance
-and security goals of a Software Development Team.
+and security goals of a Software Development Team.  The same applies to ORM tools
+because if they indeed pose a severe performance penalty on an application, there is
+no point using them in any serious application.
 
-Project Managers and Business Users on the other hand are more interested in more
+On the other hand, Project Managers and Business Users are more interested in more
 and better functionality quickly.  Given the amount of boilerplate code that an ORM
-tool can reduce, they are enticing enough for any Development Team looking to rely
-heavily on database interactions.  Most database interactions are standard and
-repetitive and pose no fun at all if copied and pasted for every single domain object
-in an application's code.  Therefore, a clear incentive exists for the Developers
-to use an ORM tool for database interactions and focus more on the business rules,
-logic and workflows in the application.  However, many teams have a deeply ingrained
-fear of ORM tools and therefore they cannot make an object decision on whether or not
-they will benefit from using an ORM tool for their application.
+tool can reduce, it is natural for Development Teams looking to rely heavily on database
+interactions to gravitate towards ORM tools in order to build new features quickly.
+Most database interactions are standard and repetitive and pose no fun at all if copied
+and pasted for every single domain object in an application's code.  Therefore, a clear
+incentive exists for the Developers to use an ORM tool for database interactions and
+focus more on the business rules, logic and workflows in the application.  However, many
+teams have a deeply ingrained fear of ORM tools and therefore they cannot make an
+objective decision on whether or not they will benefit from using an ORM tool for their
+application.
 
 # Overview
-This application uses some popular tools and technologies to compare the runtime
-performance of data access code using different mechanisms.  It uses an extreme case
-where any glaring flaws in any one data access technology should be highlighted much
-more than in regular use cases.  An in-memory database ([H2](http://www.h2database.com))
-with two tables `Person` and `Contract` is used.  The `Contract` table holds 3 records
-for every record in the `Person` table.  The `Person` table has 100,000 records (thereby
-having 300,000 records in the `Contract` table).  H2 database has been used because
-it allows the application to load the entire database in memory and performance
-measurement be free from the impact of external factors such as server load, network
-latency, network congestion, etc.  Measurements can focus purely on the mechanism
-used to load data.
+This application uses popular tools and technologies to compare the runtime performance
+of data access code using different mechanisms.  It uses an extreme case where any
+glaring flaws in any one data access technology should be highlighted much more than in
+regular use cases.  An in-memory database ([H2](http://www.h2database.com)) with two
+tables `Person` and `Contract` is used.  The `Contract` table holds 3 records for every
+record in the `Person` table.  The `Person` table has 100,000 records (thereby having
+300,000 records in the `Contract` table).  H2 database has been used because it allows
+the application to load the entire database in memory and performance measurement
+be free from the impact of external factors such as server load, network latency, network
+congestion, etc.  Measurements can focus purely on the mechanism used to load data.
 
 [JMH](http://openjdk.java.net/projects/code-tools/jmh/), a popular micro-benchmarking
 tool is used for running the benchmarks.  The advantage of using JMH lies in the fact
@@ -57,8 +60,8 @@ The benchmarks load all 100,000 person records from the database at the same tim
 then count the total number of contracts load along with the person records.
 
 Sample results can be checked by clicking the build status image at the top of this
-image which will show details for the latest continuous integration build for this
-sample.
+page which will lead to a page showing details for the latest continuous integration build
+for this sample, that includes benchmark measurements at the very bottom.
 
 # License
 This sample application and its associated source code in its entirety is being made
