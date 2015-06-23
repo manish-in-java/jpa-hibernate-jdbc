@@ -1,6 +1,4 @@
-[![Build status](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/status.png)](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/latest)
-
-# Background
+# Background [![Build status](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/status.png)](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/latest)
 It is common concern among developers that using an
 [Object-Relational Mapping](https://en.wikipedia.org/wiki/Object-relational_mapping)
 tool (ORM) will impact the performance of their application severely, especially
