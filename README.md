@@ -1,4 +1,6 @@
-# Background [![Build status](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/status.png)](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/latest)
+[![Build status](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/status.png)](https://drone.io/github.com/manish-in-java/jpa-hibernate-jdbc/latest)
+
+# Background
 It is common concern among developers that using an
 [Object-Relational Mapping](https://en.wikipedia.org/wiki/Object-relational_mapping)
 tool (ORM) will impact the performance of their application severely, especially
@@ -61,9 +63,20 @@ Sample results can be checked by clicking the build status image at the top of t
 page which will lead to a page showing details for the latest continuous integration build
 for this sample, that includes benchmark measurements at the very bottom.
 
+# Environment
+[![JDK 8+](http://b.repl.ca/v1/JDK-8+-blue.png)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+[![Maven 3.3](http://b.repl.ca/v1/Maven-3.3-blue.png)](https://maven.apache.org)
+[![JMH 1.9](http://b.repl.ca/v1/JMH-1.9-blue.png)](http://openjdk.java.net/projects/code-tools/jmh/)
+[![JPA 2.1](http://b.repl.ca/v1/JPA-2.1-blue.png)](https://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html)
+[![Hibernate 4.3](http://b.repl.ca/v1/Hibernate-4.3-blue.png)](http://www.hibernate.org)
+[![JDBC 4](http://b.repl.ca/v1/JDBC-4-blue.png)](http://www.oracle.com/technetwork/java/javase/jdbc/index.html
+[![MIT License](http://b.repl.ca/v1/License-MIT-blue.png)](#License)
+
 # License
 This sample application and its associated source code in its entirety is being made
 available under the following licensing terms.
+
+    The MIT License (MIT)
 
     Copyright (C) 2015
 
